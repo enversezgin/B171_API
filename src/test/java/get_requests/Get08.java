@@ -1,6 +1,6 @@
 package get_requests;
 
-import baseUrl.JsonplaceholderBaseUrl ;
+import baseUrl.JsonPlaceHolderBaseUrl ;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Get08 extends JsonplaceholderBaseUrl  {
+public class Get08 extends JsonPlaceHolderBaseUrl  {
     /*
         Given
            https://jsonplaceholder.typicode.com/todos

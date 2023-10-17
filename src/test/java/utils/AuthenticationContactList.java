@@ -19,4 +19,3 @@ public class AuthenticationContactList {
         return response.jsonPath().getString("token");
     }
 }
-//SON 5 DAKİKA TEKRAR DİNLENECEK

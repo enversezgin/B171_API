@@ -35,55 +35,48 @@ public class Put01 extends JsonPlaceHolderBaseUrl {
 
     @Test
     public void put01() {
-        // Set the URL
-        spec.pathParams("first", "todos", "second", 198);
+        //set the url
+        spec.pathParams("first","todos","second",198);
 
-        // Set the expected data
-        Map<String, Object> payLoad = new HashMap<>();
-        payLoad.put("userId", 21);
-        payLoad.put("title", "Wash the dishes");
-        payLoad.put("completed", false);
+        //set the expected data
+        Map<String,Object> payLoad=new HashMap<>();
+        payLoad.put("userId",21);
+        payLoad.put("title","Wash the dishes");
+        payLoad.put("completed",false);
 
+        //send the request and get the response
 
-        // Send the request and get the response
-        Response response = given(spec).body(payLoad).when().put("{first}/{second}"); //Serialization
+        Response response = given(spec).body(payLoad).when().put("{first}/{second}");
         response.prettyPrint();
 
-        // Do assertion
-        Map<String, Object> actualData = response.as(HashMap.class);
+        //do assertion
+        Map<String,Object> actualData=response.as(HashMap.class);
         assertEquals(200,response.statusCode());
-        assertEquals(payLoad.get("userId"), actualData.get("userId"));
-        assertEquals(payLoad.get("title"), actualData.get("title"));
-        assertEquals(payLoad.get("completed"), actualData.get("completed"));
-
-
-
-
+        assertEquals(payLoad.get("userId"),actualData.get("userId"));
+        assertEquals(payLoad.get("title"),actualData.get("title"));
+        assertEquals(payLoad.get("completed"),actualData.get("completed"));
     }
 
     @Test
-    public void put02() {
-        // Set the URL
-        spec.pathParams("first", "todos", "second", 198);
+    public void put01Methodlu() {
+        //set the url
+        spec.pathParams("first","todos","second",198);
 
-        // Set the expected data
-        JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData;
-        obj.getPayLoad(21,"Wash the dishes", false)
+        //set the expected data
+        JsonPlaceHolderTestData obj=new JsonPlaceHolderTestData();
+        Map<String, Object> payLoad = obj.getPayLoad(21, "Wash the dishes", false);
 
 
-        // Send the request and get the response
-        Response response = given(spec).body(payLoad).when().put("{first}/{second}"); //Serialization
+        //send the request and get the response
+
+        Response response = given(spec).body(payLoad).when().put("{first}/{second}");
         response.prettyPrint();
 
-        // Do assertion
-        Map<String, Object> actualData = response.as(HashMap.class);
+        //do assertion
+        Map<String,Object> actualData=response.as(HashMap.class);
         assertEquals(200,response.statusCode());
-        assertEquals(payLoad.get("userId"), actualData.get("userId"));
-        assertEquals(payLoad.get("title"), actualData.get("title"));
-        assertEquals(payLoad.get("completed"), actualData.get("completed"));
-
-
-
-
+        assertEquals(payLoad.get("userId"),actualData.get("userId"));
+        assertEquals(payLoad.get("title"),actualData.get("title"));
+        assertEquals(payLoad.get("completed"),actualData.get("completed"));
     }
 }
