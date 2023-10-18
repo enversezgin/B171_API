@@ -27,6 +27,6 @@ public class Get04 extends PetStoreBaseUrl {
         response
                 .then()
                 .statusCode(200)
-                .contentType(ContentType.JSON);
+                .contentType(ContentType.JSON); //“application/json” ile aynı işi görür. Yazım hatalarını engellemek için böyle kullanılır.
     }
 }

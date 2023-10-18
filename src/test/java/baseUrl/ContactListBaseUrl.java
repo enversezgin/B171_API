@@ -14,6 +14,9 @@ public class ContactListBaseUrl {
     public void setup() {
         spec = new RequestSpecBuilder()
                 .setBaseUri("https://thinking-tester-contact-list.herokuapp.com")
+
+                //.addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTIxOWEwNDkyNjc2MzAwMTMxYmMyNGMiLCJpYXQiOjE2OTc1MzEzNzR9.UMMEb_xbeHW6gsjvFQqXhSN-8NOEt1CcxPyJWIXc9eU")
+                // bu şekilde de Authentication hard old. her login de bayatlayacağı  için aşağıdaki yol kullanılır.
                 .addHeader("Authorization","Bearer " + generateToken())
                 .build();
     }

@@ -39,28 +39,28 @@ public class Get07 extends HerokuAppBaseUrl {
     @Test
     public void get07() {
         // Set the URL
-        spec.pathParams("first", "booking", "second", 1396);
+        spec.pathParams("first", "booking", "second", 23);
 
         // Set the expected data
 
         // Send the request and get the response
         Response response = given(spec).when().get("{first}/{second}");
         response.prettyPrint();
-
-        // Do assertion
-        // 1.YOL
-        response
-                .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON)
-                .body("firstname", equalTo("Jim"))
-                .body("lastname", equalTo("Brown"))
-                .body("totalprice", equalTo(111))
-                .body("depositpaid", equalTo(true))
-                .body("bookingdates.checkin", equalTo("2018-01-01"))
-                .body("bookingdates.checkout", equalTo("2019-01-01"))
-                .body("additionalneeds", equalTo("Breakfast"));
-
+//
+//        // Do assertion (doğrulama işlemleri) kres maçers nedir?
+//        // 1.YOL
+//       response
+//               .then()
+//               .statusCode(200)
+//               .contentType(ContentType.JSON)
+//               .body("firstname", equalTo("Jim"))      //Method import ederken "Marchers.equalTo" kullanılacak
+//               .body("lastname", equalTo("Brown"))     //Method import edildikten sonra import kısmı "Marchers.*" olarak kullanılacak
+//               .body("totalprice", equalTo(111))
+//               .body("depositpaid", equalTo(true))
+//               .body("bookingdates.checkin", equalTo("2018-01-01"))    //Sorgulanan datada { old. için . ile devam edildi
+//               .body("bookingdates.checkout", equalTo("2019-01-01"))
+//               .body("additionalneeds", equalTo("Breakfast"));
+//
         // JsonPath Alıştırmaları
         JsonPath json = response.jsonPath();
 
@@ -74,7 +74,7 @@ public class Get07 extends HerokuAppBaseUrl {
         System.out.println("CheckIn: " + checkIn);
 
         // 2.YOL
-        assertEquals(200, response.statusCode());
+        assertEquals(200, response.statusCode());                       // statusCode doğrulama
         assertTrue(response.contentType().contains("application/json"));
         assertEquals("Jim", json.getString("firstname"));
         assertEquals("Brown", json.getString("lastname"));
@@ -85,3 +85,17 @@ public class Get07 extends HerokuAppBaseUrl {
         assertEquals("Breakfast", json.getString("additionalneeds"));
     }
 }
+
+
+/*
+        DERS BOYUNCA YAPILAN ADIMLARIN ÖZETİ
+
+
+    1.  Given de verilen URL'i Postman de API sorgusu yapılarak gelen dataları kontrol ederiz.
+    2.  BaseURL ->HerokuAppBaseUrl classı oluşturulur (başka bir klasörden kopyala ana adresi yapıştır)
+    3.  HerokuAppBaseUrl'den extend yapılır.
+    4.  Birden fazla endpoint olduğu için Set the URL kısmında "pathParams" seçilir
+
+
+
+ */

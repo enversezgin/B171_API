@@ -1,10 +1,8 @@
 package post_requests;
 
 import baseUrl.PetStoreBaseUrl;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
-
 import static io.restassured.RestAssured.given;
 
 public class Post01 extends PetStoreBaseUrl {
@@ -39,7 +37,7 @@ public class Post01 extends PetStoreBaseUrl {
             Content Type "application/json" olmalı
      */
 
-    @Test
+    @Test                       // POST İŞLEMİ YAPMA
     public void post01() {
         // Set the URL
         spec.pathParam("first", "pet");
@@ -64,10 +62,12 @@ public class Post01 extends PetStoreBaseUrl {
                 "                \"status\": \"available\"\n" +
                 "            }";
 
-        // Send the request and get the response
-        Response response = given(spec).body(payLoad).when().post("{first}");
-        response.prettyPrint();
+      // Send the request and get the response
+      // Response response = given(spec).body(payLoad).contentType(ContentType.JSON).when().post("{first}"); BU DA SADELEŞTİRİLEREK AŞAĞIDAKİNE DÖNÜŞTÜ
 
+           Response response = given(spec).body(payLoad).when().post("{first}");
+
+           response.prettyPrint();
 
     }
 }
