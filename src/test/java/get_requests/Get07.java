@@ -39,28 +39,28 @@ public class Get07 extends HerokuAppBaseUrl {
     @Test
     public void get07() {
         // Set the URL
-        spec.pathParams("first", "booking", "second", 23);
+        spec.pathParams("first", "booking", "second", 1396);
 
         // Set the expected data
 
         // Send the request and get the response
         Response response = given(spec).when().get("{first}/{second}");
         response.prettyPrint();
-//
-//        // Do assertion (doğrulama işlemleri) kres maçers nedir?
-//        // 1.YOL
-//       response
-//               .then()
-//               .statusCode(200)
-//               .contentType(ContentType.JSON)
-//               .body("firstname", equalTo("Jim"))      //Method import ederken "Marchers.equalTo" kullanılacak
-//               .body("lastname", equalTo("Brown"))     //Method import edildikten sonra import kısmı "Marchers.*" olarak kullanılacak
-//               .body("totalprice", equalTo(111))
-//               .body("depositpaid", equalTo(true))
-//               .body("bookingdates.checkin", equalTo("2018-01-01"))    //Sorgulanan datada { old. için . ile devam edildi
-//               .body("bookingdates.checkout", equalTo("2019-01-01"))
-//               .body("additionalneeds", equalTo("Breakfast"));
-//
+
+        // Do assertion (doğrulama işlemleri) kres maçers nedir?
+        // 1.YOL
+       response
+               .then()
+               .statusCode(200)
+               .contentType(ContentType.JSON)
+               .body("firstname", equalTo("Jim"))      //Method import ederken "Marchers.equalTo" kullanılacak
+               .body("lastname", equalTo("Brown"))     //Method import edildikten sonra import kısmı "Marchers.*" olarak kullanılacak
+               .body("totalprice", equalTo(111))
+               .body("depositpaid", equalTo(true))
+               .body("bookingdates.checkin", equalTo("2018-01-01"))    //Sorgulanan datada { old. için . ile devam edildi
+               .body("bookingdates.checkout", equalTo("2019-01-01"))
+               .body("additionalneeds", equalTo("Breakfast"));
+
         // JsonPath Alıştırmaları
         JsonPath json = response.jsonPath();
 

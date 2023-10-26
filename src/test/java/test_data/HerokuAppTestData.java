@@ -11,14 +11,18 @@ public class HerokuAppTestData {
         return bookingdatesData;
     }
 
-    public Map<String, Object> getPayLoad(String firstname, String lastname, Integer totalprice, Boolean depositpaid, Map<String, String> bookingdates, String additionalneeds){
-        Map<String, Object> expectedData = new HashMap<>();
+    public Map<String, Object> getPayLoad(String firstname,
+                                          String lastname,
+                                          Integer totalprice,
+                                          Boolean depositpaid,
+                                          Map<String, String> bookingdates,
+                                          String additionalneeds)
+    {   Map<String, Object> expectedData = new HashMap<>();
         expectedData.put("firstname", firstname);
         expectedData.put("lastname", lastname);
         expectedData.put("totalprice", totalprice);
         expectedData.put("depositpaid", depositpaid);
         expectedData.put("bookingdates", bookingdates);
         expectedData.put("additionalneeds", additionalneeds);
-        return expectedData;
-    }
+        return expectedData;    }
 }

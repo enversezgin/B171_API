@@ -1,22 +1,27 @@
 package pojos.jsonplaceholder;
 
-public class JsonPlaceHolderPojo {
-    // 1. Private variable'lar oluştur
-    private Integer userId;
-    private String title;
-    private Boolean completed;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-    // 2. Parametreli ve Parametresiz constructor'lar oluştur
+@JsonIgnoreProperties(ignoreUnknown = true) // Tanımlanamayan bir değerle karşılaştığında (id) bunu ignor et (görmezden gel)
+
+public class JsonPlaceHolderPojo {
+        // 1. Private variable'lar oluştur
+    private Integer userId;         // *** Burada kesinlikle karşıdan beklenen data şeklinde yazılır.
+    private String title;           // örnek olarak burada beklenen datalar userId, title, completed.
+    private Boolean completed;      // burada ben UserId yazarsam eşleşme olmaz ve pojo çalışmaz !!!
+
+        // 2. Parametreli ve Parametresiz constructor'lar oluştur
     public JsonPlaceHolderPojo(Integer userId, String title, Boolean completed) {
         this.userId = userId;
-        this.title = title;
-        this.completed = completed;
+        this.title = title;             // Parametreli Constructor oluşturulur.
+        this.completed = completed;     // Sağ tuş --> Generete --> Constructor --> hepsini seç --> OK
     }
 
-    public JsonPlaceHolderPojo() {
-    }
+    public JsonPlaceHolderPojo() {      // Parametresiz Constructor oluşturulur.
+    }                                   // Sağ tuş --> Generete --> Constructor --> Select None --> OK
+                                        // Selerezation ve Deselerazitionda hata almamak için oluşturulur !!!
 
-    // 3. Getter ve Setter metotlarını oluştur
+    // 3. Getter ve Setter metotlarını oluştur   --> Generete --> Geter and Setter --> hepsini seç --> OK
     public Integer getUserId() {
         return userId;
     }
@@ -41,9 +46,9 @@ public class JsonPlaceHolderPojo {
         this.completed = completed;
     }
 
-    // 4. toString() metodunu oluştur
+    // 4. toString() metodunu oluştur (Zorunlu Değil Dataları sout ile yazdırmak için kullanılabilir)
     @Override
-    public String toString() {
+    public String toString() {              // Sağ tuş --> Generete --> toString() --> Tamamını Seç --> OK
         return "JsonPlaceHolderPojo{" +
                 "userId=" + userId +
                 ", title='" + title + '\'' +

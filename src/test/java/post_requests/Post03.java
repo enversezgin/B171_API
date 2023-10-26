@@ -8,6 +8,7 @@ import pojos.jsonplaceholder.JsonPlaceHolderPojo;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
+
 public class Post03 extends JsonPlaceHolderBaseUrl {
     /*
     Given
@@ -45,9 +46,14 @@ public class Post03 extends JsonPlaceHolderBaseUrl {
 
         // Do assertion
         JsonPlaceHolderPojo actualData = response.as(JsonPlaceHolderPojo.class); // De-serialization
-        assertEquals(201, response.statusCode());
+        assertEquals(201, response.statusCode());   //static org.junit.Assert.assertEquals import edilir
         assertEquals(payLoad.getUserId(), actualData.getUserId());
         assertEquals(payLoad.getTitle(), actualData.getTitle());
         assertEquals(payLoad.getCompleted(), actualData.getCompleted());
     }
 }
+/* Bu örnekte Üç değer gönderip () Dört değer assert ediyoruz ve bir hata alıyoruz.
+ bunu önlemek için pojos/jsonlaceholder/JsonPlaceHolderPojo clasına
+ clas isminin altına @JsonIgnoreProperties(ignoreUnknown = true) diyerek hataları
+ görmezden gel diyoruz.
+ */

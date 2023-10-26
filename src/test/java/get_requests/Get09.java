@@ -49,7 +49,7 @@ public class Get09 extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
 
         // Do assertion
-        Map<String, Object> actualData = response.as(HashMap.class);
+        Map<String, Object> actualData = response.as(HashMap.class); // De-Serialization
         assertEquals(200, response.statusCode());
         assertEquals(expectedData.get("completed"), actualData.get("completed"));
         assertEquals(expectedData.get("userId"), actualData.get("userId"));

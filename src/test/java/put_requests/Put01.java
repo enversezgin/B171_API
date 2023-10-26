@@ -41,20 +41,19 @@ public class Put01 extends JsonPlaceHolderBaseUrl {
         //set the expected data
         Map<String,Object> payLoad=new HashMap<>();
         payLoad.put("userId",21);
-        payLoad.put("title","Wash the dishes");
+        payLoad.put("title","Wash the dishess");
         payLoad.put("completed",false);
 
-        //send the request and get the response
+       //send the request and get the response
+       Response response = given(spec).body(payLoad).when().put("{first}/{second}");
+       //response.prettyPrint();
 
-        Response response = given(spec).body(payLoad).when().put("{first}/{second}");
-        response.prettyPrint();
-
-        //do assertion
-        Map<String,Object> actualData=response.as(HashMap.class);
-        assertEquals(200,response.statusCode());
-        assertEquals(payLoad.get("userId"),actualData.get("userId"));
-        assertEquals(payLoad.get("title"),actualData.get("title"));
-        assertEquals(payLoad.get("completed"),actualData.get("completed"));
+       //do assertion
+       Map<String,Object> actualData=response.as(HashMap.class);
+       assertEquals(200,response.statusCode());
+       assertEquals(payLoad.get("userId"),actualData.get("userId"));
+       assertEquals(payLoad.get("title"),actualData.get("title"));
+       assertEquals(payLoad.get("completed"),actualData.get("completed"));
     }
 
     @Test

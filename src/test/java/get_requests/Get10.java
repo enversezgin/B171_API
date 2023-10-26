@@ -109,7 +109,5 @@ public class Get10 extends HerokuAppBaseUrl {
         JsonPath json = response.jsonPath();
         assertEquals(bookingdatesData.get("checkin"), json.getString("bookingdates.checkin"));
         assertEquals(bookingdatesData.get("checkout"), json.getString("bookingdates.checkout"));
-
-
     }
 }
