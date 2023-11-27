@@ -1,7 +1,8 @@
 package pojos.herokuapp;
 
 public class BookingPojo {
-    private String firstname;
+    private String firstname;       // burada kullanılan isimler birebir aynı olmalı
+                                    // örnek : firstname firstName olarak yazılmamalı !!!
     private String lastname;
     private Integer totalprice;
     private Boolean depositpaid;
@@ -9,8 +10,10 @@ public class BookingPojo {
     private String additionalneeds;
 
     public BookingPojo() {
-    }
+    }       // boş contructor oluştur (bkn. BookingDatesPojo)
 
+
+            // dolu contructor oluştur (bkn. BookingDatesPojo)
     public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDatesPojo bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -20,11 +23,7 @@ public class BookingPojo {
         this.additionalneeds = additionalneeds;
     }
 
-    public BookingPojo(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-
+            // Getter and Setter oluşturulur
     public String getFirstname() {
         return firstname;
     }
@@ -73,6 +72,7 @@ public class BookingPojo {
         this.additionalneeds = additionalneeds;
     }
 
+            // toString oluşturulur
     @Override
     public String toString() {
         return "BookingPojo{" +

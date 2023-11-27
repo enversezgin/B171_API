@@ -53,6 +53,7 @@ public class TC03_UpdateBooking extends HerokuAppBaseUrl {
         BookingPojo payLoad = new BookingPojo("James", "Brown", 111, true, bookingDates, "Breakfast");
 
         Response response = given(spec).body(payLoad).when().put("{first}/{second}");
+        //response.prettyPrint();
 
         BookingPojo actualData = response.as(BookingPojo.class);
         assertEquals(200, response.statusCode());
@@ -66,3 +67,6 @@ public class TC03_UpdateBooking extends HerokuAppBaseUrl {
 
     }
 }
+
+
+// 11 API dersinden 35 dk kaldı

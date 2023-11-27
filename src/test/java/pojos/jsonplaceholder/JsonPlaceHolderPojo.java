@@ -2,7 +2,7 @@ package pojos.jsonplaceholder;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true) // Tanımlanamayan bir değerle karşılaştığında (id) bunu ignor et (görmezden gel)
+@JsonIgnoreProperties(ignoreUnknown = true) // Tanımlanamayan bir değerle karşılaştığında (yani id) bunu ignor et (görmezden gel)
 
 public class JsonPlaceHolderPojo {
         // 1. Private variable'lar oluştur

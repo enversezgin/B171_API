@@ -32,27 +32,27 @@ public class Get12 extends HerokuAppBaseUrl {
             }
   */
 
-    @Test
+    @Test                       // tekrar esnasında pass almak için dataları değiştirdim.+
     public void get12() {
         // Set the URL
-        spec.pathParams("first", "booking", "second", 2737);
+        spec.pathParams("first", "booking", "second", 249);
 
         // Set the expected data
         BookingDatesPojo bookingDates = new BookingDatesPojo("2018-01-01", "2019-01-01");
-        BookingPojo expectedData = new BookingPojo("Jane", "Doe", 111, true, bookingDates, "Extra pillows please");
+        BookingPojo expectedData = new BookingPojo("John", "Smith", 111, true, bookingDates, "Dinner");
 
         // Send the request and get the response
         Response response = given(spec).when().get("{first}/{second}"); // Serialization
         response.prettyPrint();
 
         // Do assertion
-        BookingPojo actualData = response.as(BookingPojo.class);
+        BookingPojo actualData = response.as(BookingPojo.class); // De-serialization
         assertEquals(200, response.statusCode());
         assertEquals(expectedData.getFirstname(), actualData.getFirstname());
         assertEquals(expectedData.getLastname(), actualData.getLastname());
         assertEquals(expectedData.getTotalprice(), actualData.getTotalprice());
         assertEquals(expectedData.getDepositpaid(), actualData.getDepositpaid());
-        assertEquals(bookingDates.getCheckin(), actualData.getBookingdates().getCheckin());
+        assertEquals(bookingDates.getCheckin(), actualData.getBookingdates().getCheckin());         //expectedDate objesinden değil doğrudan bookingDates objesinden ulaşılabilir.
         assertEquals(bookingDates.getCheckout(), actualData.getBookingdates().getCheckout());
         assertEquals(expectedData.getAdditionalneeds(), actualData.getAdditionalneeds());
     }

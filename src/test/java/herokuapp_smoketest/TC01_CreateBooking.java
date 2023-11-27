@@ -26,12 +26,12 @@ public class TC01_CreateBooking extends HerokuAppBaseUrl {
             },
             "additionalneeds" : "Breakfast"
         }'
-    When
+    When                                            --> when ile kullanıcı eyleme geçer
         Kullanıcı POST Request gönderir
-    Then
+    Then                                            --> then ile doğrulama yapılır
         Status Code: 200
-    And
-        {
+    And                                             --> then devamı old. için and ile devam edilir.
+            {
             "bookingid": 1,
             "booking": {
                 "firstname": "Jim",
@@ -45,24 +45,22 @@ public class TC01_CreateBooking extends HerokuAppBaseUrl {
                 "additionalneeds": "Breakfast"
             }
         }
-
     */
-
     public static int bookingId;
     @Test
-    public void createBooking() {
+    public void createBooking() {                           //   --> Set the URL
         spec.pathParam("first", "booking");
 
         BookingDatesPojo bookingDates = new BookingDatesPojo("2018-01-01", "2019-01-01");
         BookingPojo payLoad = new BookingPojo("Jim", "Brown", 111, true, bookingDates, "Breakfast");
 
-        Response response = given(spec).body(payLoad).when().post("{first}");
-        response.prettyPrint();
+        Response response = given(spec).body(payLoad).when().post("{first}");   // --> Send the request and get the response
+        //response.prettyPrint();     // body karşıya gidecek mi?
 
         bookingId = response.jsonPath().getInt("bookingid");
-        System.out.println("BookinID: " + bookingId);
+        //System.out.println("BookinID: " + bookingId);
 
-        BookingResponsePojo actualData = response.as(BookingResponsePojo.class);
+        BookingResponsePojo actualData = response.as(BookingResponsePojo.class);    // Jyson data Java ya dönüştü (deselerization)
         assertEquals(200, response.statusCode());
         assertEquals(payLoad.getFirstname(), actualData.getBooking().getFirstname());
         assertEquals(payLoad.getLastname(), actualData.getBooking().getLastname());

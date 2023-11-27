@@ -20,8 +20,8 @@ public class TC04_PartialUpdateBooking extends HerokuAppBaseUrl {
         https://restful-booker.herokuapp.com/booking/:id
     And
         {
-            "firstname" : "Gürkay",
-            "lastname" : "Birinci"
+            "firstname" : "Enver",
+            "lastname" : "SEZGIN"
         }
     When
         Kullanıcı PATCH Request gönderir
@@ -29,8 +29,8 @@ public class TC04_PartialUpdateBooking extends HerokuAppBaseUrl {
         Status Code: 200
     And
         {
-            "firstname" : "Gürkay",
-            "lastname" : "Birinci",
+            "firstname" : "Enver",
+            "lastname" : "SEZGIN",
             "totalprice" : 111,
             "depositpaid" : true,
             "bookingdates" : {
@@ -48,7 +48,7 @@ public class TC04_PartialUpdateBooking extends HerokuAppBaseUrl {
         spec.pathParams("first", "booking", "second", bookingId);
 
         HerokuAppTestData obj = new HerokuAppTestData();
-        Map<String, Object> payLoad = obj.getPayLoad("Gürkay", "Birinci", null, null, null, null);
+        Map<String, Object> payLoad = obj.getPayLoad("Enver", "SEZGIN", null, null, null, null);
 
         Response response = given(spec).body(payLoad).when().patch("{first}/{second}");
         response.prettyPrint();
@@ -60,3 +60,17 @@ public class TC04_PartialUpdateBooking extends HerokuAppBaseUrl {
 
     }
 }
+
+//14 Ekim
+
+/*
+
+ * Post işleminde oluşturduğumuz datanın ID'sini aldık.
+ * jsonPath kullanarak bookingId değişkeninde ID değerimizi aldık
+ * Daha sonra bu değeri get,update,patchupdate de kullandık
+ * Id'yi aldık containeri koyduk
+ * Runner class kullandık. Çünkü manuel olarak çalıştırınca datalar bellekten siler. Sıfırlanmaması için hafızada yer koruması lazım
+ * Runner'dan çalıştırınca bütün testler sona erdikten sonra konsolda en aşağıda finish yazar.
+ * partialUpdate'de Mapleri kullanmanın daha avantajlı olduğunu gördük
+
+   */
