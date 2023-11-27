@@ -156,7 +156,7 @@ public class GetCustomer extends GmiBankBaseUrl {
        assertEquals(accounts2.getEmployee(),         actualDataCustomer.getAccounts().get(1).getEmployee());
        assertEquals(accounts2.getAccountlogs(),      actualDataCustomer.getAccounts().get(1).getAccountlogs());
 
-        System.out.println("Ödev Tamamladi");
+        System.out.println("Ödev Tamamladi.git");
 
 
 
